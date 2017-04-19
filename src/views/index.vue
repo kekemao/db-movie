@@ -2,12 +2,13 @@
     <div>
     <div v-if="!loadingData">
         <v-header :title="title"></v-header>
-       <section class="ui-panel" @click="toList">
+        <section class="ui-panel" @click="toList">
                <h2 class="ui-arrowlink">
                    {{datas.title}}
                    <span class="ui-panel-subtitle">{{datas.total}}个</span>
                </h2>
        </section>
+       <div class="section">
         <section class="content" v-for="module in modules">
          <router-link v-bind:to="{name: 'show', query: {id: module.id,no:'123'}}">
             <img :src="module.images.large" alt="">
@@ -15,6 +16,7 @@
         </router-link>
 
         </section>
+        </div>
     </div>
     <loading :show="loadingData"></loading>
     </div>
@@ -52,33 +54,40 @@
         }
     </script>
     <style>
-    .ui-panel {
-        margin-top: 100px;
-        padding-bottom: 5px;
-        line-height: 50px;
-        font-size: 30px;
-        /* display: block; */
-    }
-    .content a{
-        float: left;
-    }
-    .ui-nowrap{
-        line-height: 40px;
-        font-size: 30px;
-    }
-   .ui-grid-trisect li {
-        position: relative;
-    }
-    .ui-grid-trisect p {
-        position: absolute;
-        bottom: 0px;
-        height: 30px;
-        line-height: 30px;
-        color: #fff;
-        width: 100%;
-        text-align: center;
-        font-size: 14px;
-        background: rgba(0,0,0,0.6);
-        padding:0px 5px;
-    }
+      .ui-panel {
+          margin-top: 100px;
+          padding-bottom: 5px;
+          line-height: 80px;
+          font-size: 30px;
+          /* display: block; */
+      }
+      .section{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .content a{
+          float: left;
+      }
+      .ui-nowrap{
+          line-height: 40px;
+          font-size: 30px;
+      }
+     .ui-grid-trisect li {
+          position: relative;
+      }
+      .ui-grid-trisect p {
+          position: absolute;
+          bottom: 0px;
+          height: 30px;
+          line-height: 30px;
+          color: #fff;
+          width: 100%;
+          text-align: center;
+          font-size: 14px;
+          background: rgba(0,0,0,0.6);
+          padding:0px 5px;
+      }
     </style>
