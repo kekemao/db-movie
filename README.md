@@ -2,29 +2,23 @@
 
 > A Vue.js project
 
-## Build Setup
+使用vue.js+webpack+豆瓣api写的一个[电影webapp](http://liyahui.github.io/vue-movie)，由于部分接口需要权限，豆瓣已经关闭了apikey的申请，最初计划做的一些功能没有实现
 
-``` bash
-# install dependencies
+```shell
+git clone https://github.com/liyahui/vue-movie.git
+
+# 安装依赖模块
 npm install
 
-# serve with hot reload at localhost:8080
+# 开发环境(localhost:8080)
 npm run dev
 
-# build for production with minification
+# 发布代码
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+components  //组件放在这儿
+App.vue  //初始化工作，以及挂载路由的router-view组件
+main.js //入口程序
+router.js //SPA 路由配置文件
+index.vue //为路由指向页面
+list.vue、show.vue //渲染后展示的组件
