@@ -1,7 +1,7 @@
     <template>
     <div>
     <div v-if="!loadingData">
-        <v-header :title="title"></v-header>
+        <v-header :title="title" :mintit="mintit"></v-header>
         <section class="ui-panel" @click="toList">
                <h2 class="ui-arrowlink">
                    {{datas.title}}
@@ -22,6 +22,7 @@
     </div>
     </template>
     <script>
+        import axios from 'axios'
         import header from '../components/HeaderBar.vue'
         import loading from '../components/Loading.vue'
         import router from '../router'
@@ -29,6 +30,9 @@
           data () {
             return {
               title: '电影',
+              mintit: {
+                name: '列表'
+              },
               datas: {},
               modules: {},
               loadingData: true
@@ -45,10 +49,23 @@
             'loading': loading
           },
           mounted: function () {
-            this.$http.jsonp('http://api.douban.com/v2/movie/top250', {count: 6}).then((response) => {
+            // let that = this  ES5用
+            axios({
+              method: 'post',
+              url: '/v2/movie/top250',
+              data: {
+                count: 16
+              }
+            }).then(response => {
+              console.log(response)
               this.datas = response.data
               this.modules = response.data.subjects
               this.loadingData = false
+            }).catch(function (error) { // ES5用  function
+              console.log(error)
+               // that.datas = response.data
+              // this.modules = response.data.subjects
+              // this.loadingData = false
             })
           }
         }

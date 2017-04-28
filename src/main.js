@@ -10,5 +10,13 @@ const app = new Vue({
   router: router,
   render: h => h(App)
 }).$mount('#app') // 这里绑定的是index.html中的id为app的div元素
-router.push('/index')
+// router.push('/index') 建议写在 router.js
 export default app
+/*
+等价于
+new Vue({
+  router: router,
+  render: h => h(App)
+}).$mount('#app') // 这里绑定的是index.html中的id为app的div元素
+router.push('/index')
+*/

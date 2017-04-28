@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import header from '../components/HeaderBar.vue'
 import loading from '../components/Loading.vue'
 export default {
@@ -53,13 +54,21 @@ export default {
     'loading': loading
   },
   mounted: function () {
-    this.$http.jsonp('http://api.douban.com/v2/movie/celebrity/' + this.$route.params.id).then((response) => {
+    axios({
+      method: 'post',
+      url: '/v2/movie/celebrity/' + this.$route.params.id,
+      data: {
+        // count: 6
+      }
+    }).then(response => {
       document.title = this.title = response.data.name
       this.image = response.data.avatars.large
       this.gender = response.data.gender
       this.born_place = response.data.born_place
       this.works = response.data.works
       this.loadingData = false
+    }).catch(function (error) { // ES5用  function
+      console.log(error)
     })
   }
 }

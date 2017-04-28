@@ -2,7 +2,7 @@
   <div>
     <!-- 主体切换 -->
     <div class="header">
-      {{title}}
+      {{title}}{{mintit.name}}
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   data () {
     return {
-/* title: "电影" */
+      // title: '电影22'
     }
   },
     /* props: {
@@ -18,7 +18,7 @@ export default {
           type: Object
         }
       }, */
-  props: ['left', 'title', 'right'],
+  props: ['left', 'title', 'right', 'mintit'],
   methods: {
     back () {
       window.history.back()

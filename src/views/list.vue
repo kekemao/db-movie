@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     import header from '../components/HeaderBar.vue'
     import loading from '../components/Loading.vue'
 export default {
@@ -41,11 +42,19 @@ export default {
         'loading': loading
       },
   mounted: function () {
-        this.$http.jsonp('http://api.douban.com/v2/movie/' + this.$route.query.type).then((response) => {
+        axios({
+          method: 'post',
+          url: '/v2/movie/' + this.$route.query.type,
+          data: {
+            // count: 6
+          }
+        }).then(response => {
           document.title = this.title = response.data.title.split('-')[0]
           console.log(response.data.subjects)
           this.list = response.data.subjects
           this.loadingData = false
+        }).catch(function (error) { // ES5用  function
+          console.log(error)
         })
   }
 }

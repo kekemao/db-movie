@@ -27,6 +27,9 @@ const router = new VueRouter({
       name: 'list',
       path: '/list',
       component: require('./views/list.vue')
+    },
+    {
+      path: '*', redirect: '/index'
     }
   ]
 })

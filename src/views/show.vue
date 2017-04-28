@@ -34,6 +34,7 @@
     </template>
 
 <script>
+import axios from 'axios'
 import header from '../components/HeaderBar.vue'
 import loading from '../components/Loading.vue'
 export default {
@@ -56,7 +57,13 @@ export default {
     loading
   },
   mounted: function () {
-    this.$http.jsonp('https://api.douban.com/v2/movie/subject/' + this.id).then((response) => {
+    axios({
+      method: 'post',
+      url: '/v2/movie/subject/' + this.id,
+      data: {
+        // count: 6
+      }
+    }).then(response => {
       document.title = this.title = response.data.title
       this.image = response.data.images.large
       this.genres = response.data.genres
@@ -66,9 +73,8 @@ export default {
       this.summary = response.data.summary
       this.directors = response.data.directors
       this.loadingDate = false
-    }, (response) => {
-    // 响应错误回调
-      alert('a')
+    }).catch(function (error) { // ES5用  function
+      console.log(error)
     })
   }
 }

@@ -24,10 +24,43 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     port: 8080,
-    autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '**v2/**': {
+        target: 'http://api.douban.com/',
+        changeOrigin: true,
+        onError: function (err, req, res) {
+          console.log(err)
+            // console.log(req);
+            // console.log(res);
+        },
+        onProxyRes: function (proxyRes, req, res) {
+        },
+        onProxyReq: function (proxyReq, req, res) {
+          var is4dot0 = false
+          var acceptValue = ''
+          var acceptEncodeing = ''
+          var rawHeaders = req.rawHeaders
+
+          rawHeaders.forEach(function (value, index) {
+            if (value === 'Accept') {
+              acceptValue = rawHeaders[index + 1]
+            }
+            if (value === 'Accept-Encoding') {
+              acceptEncodeing = rawHeaders[index + 1]
+            }
+            if (value.indexOf('Mozilla/4.0') === 0) {
+              is4dot0 = true
+            }
+          })
+          if (is4dot0) {
+            proxyReq.setHeader('Accept', acceptValue)
+            proxyReq.setHeader('Accept-Encoding', acceptEncodeing)
+          }
+        }
+      }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
