@@ -2,10 +2,10 @@
 
 > A Vue.js project
 
-使用vue.js+webpack+豆瓣api写的一个[电影webapp](http://liyahui.github.io/vue-movie)，由于部分接口需要权限，豆瓣已经关闭了apikey的申请，最初计划做的一些功能没有实现
+使用vue.js+webpack+豆瓣api写的一个[电影webapp]，由于部分接口需要权限，豆瓣已经关闭了apikey的申请，最初计划做的一些功能没有实现
 
 ```shell
-git clone https://github.com/liyahui/vue-movie.git
+git clone https://github.com/kekemao/vue.git
 
 
 1、安装淘宝镜像 npm install -g cnpm --registry=https://registry.npm.taobao.org
