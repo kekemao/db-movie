@@ -13,7 +13,7 @@ git clone https://github.com/liyahui/vue-movie.git
 3、安装vue脚手架  npm install vue-cli -g
 4、创建项目  vue init webpack my-project 工程名字<工程名字不能用中文>
 5、cd进入项目安装项目依赖 cnpm install
-6、安装 vue 路由模块vue-router和网络请求模块vue-resource   cnpm install vue-router vue-resource --save
+6、安装 vue 路由模块vue-router和网络请求模块axios   npm install axios --save
 7、启动项目  cnpm run dev
 
 # 开发环境(localhost:8080)
