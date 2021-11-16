@@ -28,3 +28,4 @@ main.js //入口程序
 router.js //SPA 路由配置文件
 index.vue //为路由指向页面
 list.vue、show.vue //渲染后展示的组件
+rwerqwreqwrqwe
